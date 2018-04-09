@@ -1,0 +1,88 @@
+﻿#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.List;
+
+/**
+ * ================================================
+ * 作    者：夏沐尧  Github地址：https://github.com/XiaMuYaoDQX
+ * 版    本：1.0
+ * 创建日期： ${DATE}
+ * 描    述：
+ * 修订历史：
+ * ================================================
+ */
+#parse("File Header.java")
+public class ${NAME} extends RecyclerView.Adapter<${NAME}.${VIEWHOLDER_CLASS}> implements View.OnClickListener {
+    private final Context mcontext;
+    private ${ITEM_CLASS} m${ITEM_CLASS};
+    private OnItemClickListener mOnItemClickListener = null;
+
+    public ${NAME}(${ITEM_CLASS} m${ITEM_CLASS}, Context context) {
+        this.m${ITEM_CLASS} = m${ITEM_CLASS};
+        this.mcontext = context;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ${VIEWHOLDER_CLASS} holder, int position) {
+        //设置每一条位置
+        holder.itemView.setTag(position);
+        //View绑定数据
+    }
+
+    @Override
+    public ${VIEWHOLDER_CLASS} onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //如果嵌套 这里需要重写
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.${LAYOUT_RES_ID}, parent, false);
+        view.setOnClickListener(this);
+        return new ${VIEWHOLDER_CLASS}(view);
+    }
+
+    @Override
+    public int getItemCount() {
+        if (m${ITEM_CLASS} == null) {
+            return 0;
+        }
+        return m${ITEM_CLASS}.size();
+    }
+
+    /**
+     * 数据切换重新注入数据
+     *
+     * @param items
+     */
+    public void SetNewData(${ITEM_CLASS} items) {
+        this.m${ITEM_CLASS} = items;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (mOnItemClickListener != null) {
+            mOnItemClickListener.OnItemClick(v, (Integer) v.getTag());
+        }
+    }
+
+    /**
+     * 外部对象
+     *
+     * @param listener
+     */
+    public void setItemOnClickListener(OnItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void OnItemClick(View view, int position);
+    }
+
+    class ${VIEWHOLDER_CLASS} extends RecyclerView.ViewHolder {
+        public ${VIEWHOLDER_CLASS}(View itemView) {
+            super(itemView);
+        }
+    }
+}
