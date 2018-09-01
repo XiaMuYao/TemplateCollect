@@ -1,1 +1,7 @@
 
+1 CodeGlance 		右侧有一个导航 看代码
+2 Markdown support	编辑Markdown文件 .md 文件
+3 GsonFormat		将json转换为object
+4 AceJump		代替鼠标的软件，按快捷键进入 AceJump 模式后（默认是 Ctrl+J）
+5 Alibaba 	JAVA		代码检测插件
+5 MyBatis Log Plugin (2.0.4)      sql日志
