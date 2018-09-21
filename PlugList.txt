@@ -8,3 +8,4 @@
 6 Free MyBatis plugin  mapper跳转xml
 7 Translation 翻译 找有google的
 8 InnerBuilder 建造者生成器
+9 lombok 可用来消除 Java 代码的冗长。
