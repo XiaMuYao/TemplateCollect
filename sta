@@ -1,0 +1,8 @@
+companion object {
+    fun start(context:android.content.Context){
+        val starter = Intent(context,$ACTIVITY$::class.java)
+        // starter.putExtra($CURSOR$)
+        context.startActivity(starter)
+    }
+}
+Creates a static start(...) helper method to start an Activity
